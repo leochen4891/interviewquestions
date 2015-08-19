@@ -20,7 +20,7 @@ class Solution:
     # @param {string} s
     # @return {integer}
     def romanToInt(self, s):
-        print("s =", s)
+        #print("s =", s)
         ret = 0
         remain = s
         count = len(s)
