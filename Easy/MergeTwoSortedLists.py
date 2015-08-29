@@ -8,6 +8,7 @@ __author__ = 'Lei Chen'
 
 import ListNode
 
+
 class Solution:
     # @param {ListNode} l1
     # @param {ListNode} l2

@@ -14,3 +14,17 @@ class ListNode:
 
         print()
 
+    @staticmethod
+    def fromArray(array):
+        prev = None
+        head = None
+        for v in array:
+            node = ListNode(v)
+            if prev: prev.next = node
+            if not head: head = node
+            prev = node
+
+        return head
+
+
+

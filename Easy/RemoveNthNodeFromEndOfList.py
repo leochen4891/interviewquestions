@@ -16,6 +16,7 @@ For example,
 #         self.next = None
 import ListNode
 
+
 class Solution:
     # @param {ListNode} head
     # @param {integer} n

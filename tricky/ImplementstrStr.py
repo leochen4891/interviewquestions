@@ -2,9 +2,9 @@ __author__ = 'Lei Chen'
 
 '''
 Implement strStr().
-
 Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
 '''
+# use KMP algorithm to optimize the offset indices for each unmatch in the pattern
 
 class Solution:
     # @param {string} haystack

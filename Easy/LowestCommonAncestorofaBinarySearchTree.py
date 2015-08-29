@@ -1,6 +1,5 @@
 __author__ = 'Lei Chen'
 
-import TreeNode
 
 # Definition for a binary tree node.
 # class TreeNode:
