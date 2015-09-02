@@ -18,34 +18,29 @@ Return 0 if there is no such transformation sequence.
 All words have the same length.
 All words contain only lowercase alphabetic characters.
 '''
-class GraphNode :
-
-    def __init__(self, str):
-        self.str = str
-        self.neighbors = set()
-
-    def addNeighbor(self, neighbor):
-        self.neighbors.add(neighbor)
-
-    def isNeighbor(self, neighbor):
-        return neighbor in self.neighbors
-
-    def getDistance(self, node):
-        dist = 0
-        for i in range(len(self.str)):
-            if self.str[i] != node.str[i]:
-                dist+=1
-        return dist
-
-    def __str__(self):
-        neilist = ''
-        for nei in self.neighbors:
-            neilist += ' ' + nei.str
-        return self.str + ":" + neilist
 
 class Solution(object):
-    def ladderLength(self, ):
-        pass
+    def ladderLength(self, beginWord, endWord, wordDict):
+
+        length = 2
+        width = len(beginWord)
+        front = set([beginWord])
+        back = set([endWord])
+        chars = set('abcdefghijklmnopqrstuvwxyz')
+        while front:
+            newFront = set()
+            for word in front:
+                for index in range(width):
+                    for c in chars:
+                        nw = word[:index] + c + word[index+1:]
+                        if nw in back: return length
+                        if nw in wordDict: newFront.add(nw)
+            front = newFront
+            if len(front) > len(back):
+                front, back = back, front
+            wordDict -= front
+            length += 1
+        return 0
 
     def ladderLength1(self, beginWord, endWord, wordDict):
         """
@@ -95,6 +90,31 @@ class Solution(object):
                     nodeDistance[nei] = dist+1
 
         return 0
+
+class GraphNode :
+
+    def __init__(self, str):
+        self.str = str
+        self.neighbors = set()
+
+    def addNeighbor(self, neighbor):
+        self.neighbors.add(neighbor)
+
+    def isNeighbor(self, neighbor):
+        return neighbor in self.neighbors
+
+    def getDistance(self, node):
+        dist = 0
+        for i in range(len(self.str)):
+            if self.str[i] != node.str[i]:
+                dist+=1
+        return dist
+
+    def __str__(self):
+        neilist = ''
+        for nei in self.neighbors:
+            neilist += ' ' + nei.str
+        return self.str + ":" + neilist
 
 s = Solution()
 
